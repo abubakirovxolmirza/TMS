@@ -9,6 +9,7 @@ djangorestframework = "*"
 pillow = "*"
 djangorestframework-simplejwt = "*"
 whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
