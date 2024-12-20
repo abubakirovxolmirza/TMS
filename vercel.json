@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "config/wsgi.py",
-      "use": "@ardnt/python"
+      "use": "@ardnt/vercel-python-ws"
     }
   ],
   "routes": [
