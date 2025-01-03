@@ -21,15 +21,17 @@ class Load(models.Model):
         ('TANKERSTYLE', 'TankerStyle'),
     ]
 
-    LOAD_STATUS_CHOICES = [
-        ('OFFER', 'Offer'),
-        ('BOOKED', 'Booked'),
+    LOAD_STATUS_CHOICES = (
+        ('OPEN', 'Open'),
+        ('COVERED', 'Covered'),
         ('DISPATCHED', 'Dispatched'),
-        ('INTRANSIT', 'Intransit'),
+        ('LOADING', 'Loading'),
+        ('ON ROUTE', 'On Route'),
+        ('UNLOADING', 'Unloading'),
+        ('IN YARD', 'In Yard'),
         ('DELIVERED', 'Delivered'),
-        ('INVOICED', 'Invoiced'),
-        ('PAID', 'Paid'),
-    ]
+        ('COMPLETED', 'Completed'),
+        )
     company_name = models.CharField(max_length=200, blank=True, null=True)
     reference_id = models.CharField(max_length=200, blank=True, null=True)
     instructions = models.CharField(max_length=200, blank=True, null=True)
@@ -43,7 +45,7 @@ class Load(models.Model):
     co_driver = models.CharField(max_length=100, null=True, blank=True)
     truck = models.CharField(max_length=200, blank=True, null=True)
     dispatcher = models.CharField(max_length=200, blank=True, null=True)
-    load_status = models.CharField(max_length=50, choices=LOAD_STATUS_CHOICES, blank=True, null=True)
+    load_status = models.CharField(max_length=100, choices=LOAD_STATUS_CHOICES, default='OPEN')
     tags = models.CharField(max_length=200, blank=True, null=True)
     equipment_type = models.CharField(max_length=50, choices=EQUIPMENT_TYPE_CHOICES, blank=True, null=True)
     trip_status = models.CharField(max_length=50, blank=True, null=True)

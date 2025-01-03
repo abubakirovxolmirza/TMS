@@ -1,0 +1,11 @@
+__pycache__
+.vscode
+.idea
+venv/
+/staticfiles/
+/public/
+db.sqlite3
+setenv.sh
+Pipfile
+Pipfile.lock
+
