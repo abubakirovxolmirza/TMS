@@ -325,17 +325,15 @@ class Truck(models.Model):
     mileage_on_drop = models.IntegerField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return f"{self.unit_number}"
+ #   def __str__(self):
+#        return f"{self.unit_number}"
 
 
 class TruckTags(models.Model):
     tag = models.CharField(max_length=40, blank=True, null=True)
 
-    def __str__(self):
-        return self.tag
-    def __str__(self):
-        return self.first_name
+#    def __str__(self):
+#        return self.tag
 
 class Dispatcher(models.Model):
     EMPLOYMENT_STATUS_CHOICES = [
@@ -432,8 +430,6 @@ class Dispatcher(models.Model):
 class DispatcherTags(models.Model):
     tag = models.CharField(max_length=40, blank=True, null=True)
 
-    def __str__(self):
-        return self.tag
 
 
 class Employee(models.Model):
@@ -656,17 +652,17 @@ class Load(models.Model):
     reference_id = models.CharField(max_length=200, blank=True, null=True)
     instructions = models.CharField(max_length=200, blank=True, null=True)
     bills = models.IntegerField(blank=True, null=True)
-    created_by = models.CharField(max_length=200, blank=True, null=True)
+    created_by = models.ForeignKey('Dispatcher', related_name='dispatcher', on_delete=models.CASCADE)
     created_date = models.CharField(max_length=200, blank=True, null=True)
     load_id = models.CharField(max_length=200, blank=True, null=True)
     trip_id = models.IntegerField(blank=True, null=True)
-    customer_broker = models.CharField(max_length=200, blank=True, null=True)
-    driver = models.CharField(max_length=200, blank=True, null=True)
+    customer_broker = models.ForeignKey('CustomerBroker', related_name='customer_broker', on_delete=models.CASCADE, blank=True, null=True)
+    driver = models.ForeignKey('Driver', related_name='driver', on_delete=models.CASCADE, blank=True, null=True)
     co_driver = models.CharField(max_length=100, null=True, blank=True)
-    truck = models.CharField(max_length=200, blank=True, null=True)
-    dispatcher = models.CharField(max_length=200, blank=True, null=True)
-    load_status = models.CharField(max_length=100, choices=LOAD_STATUS_CHOICES, default='OPEN')
-    tags = models.CharField(max_length=200, blank=True, null=True)
+    truck = models.ForeignKey('Truck', related_name='truck', on_delete=models.CASCADE, blank=True, null=True)
+    dispatcher = models.ForeignKey('Dispatcher', related_name='created_by', on_delete=models.CASCADE, blank=True, null=True)
+    load_status = models.CharField(max_length=50, choices=LOAD_STATUS_CHOICES, blank=True, null=True)
+    tags = models.ForeignKey('LoadTags', related_name='loadtags', on_delete=models.CASCADE, blank=True, null=True)
     equipment_type = models.CharField(max_length=50, choices=EQUIPMENT_TYPE_CHOICES, blank=True, null=True)
     trip_status = models.CharField(max_length=50, blank=True, null=True)
     invoice_status = models.CharField(max_length=50, blank=True, null=True)
@@ -688,7 +684,6 @@ class Load(models.Model):
     pod = models.FileField(blank=True, null=True)
     document = models.FileField(blank=True, null=True)
     comercial_invoice = models.FileField(blank=True, null=True)
-
     def __str__(self):
         return f"DT-{self.id}"
 
