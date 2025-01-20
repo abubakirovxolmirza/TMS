@@ -2,10 +2,10 @@ __pycache__
 .vscode
 .idea
 venv/
+env/
 /staticfiles/
 /public/
 db.sqlite3
-setenv.sh
 Pipfile
 Pipfile.lock
 

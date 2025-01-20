@@ -1,7 +1,0 @@
-[0;1;31m×[0m tms.service - Express API
-     Loaded: loaded (]8;;file://tms/etc/systemd/system/tms.service/etc/systemd/system/tms.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
-     Active: [0;1;31mfailed[0m (Result: exit-code) since Tue 2025-01-07 11:34:26 UTC; 16s ago
-   Duration: 4d 54min 48.455s
- Invocation: 5aaa399977914d68b8f17e09f4672b2b
-    Process: 202514 ExecStart=/home/sultan/express1/env/bin/gunicorn config.wsgi:application -b :8000 --workers 4 --threads 2 [0;1;31m(code=exited, status=203/EXEC)[0m
-   Main PID: 202514 (code=exited, status=203/EXEC)
