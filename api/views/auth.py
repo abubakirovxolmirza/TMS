@@ -1,11 +1,10 @@
-
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from apps.auth.models import User
-from api.dto.auth import CustomUserSerializer, CustomTokenObtainPairSerializer
 from api.views.token import get_tokens_for_user
 from rest_framework.views import APIView
 
+from apps.auth.models import User
+from api.dto.auth import CustomUserSerializer, CustomTokenObtainPairSerializer
 
 
 class LogoutUserView(generics.GenericAPIView):

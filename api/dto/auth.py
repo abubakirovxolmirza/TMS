@@ -1,9 +1,8 @@
 from rest_framework import serializers
-from apps.auth.models import User
-
+from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from django.contrib.auth import authenticate
+from apps.auth.models import User
 
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from apps.load.models import Load, Driver, Trailer, TrailerTags, DriverTags, Truck, TruckTags, Dispatcher, DispatcherTags, Employee, EmployeeTags, CustomerBroker, LoadTags, Stops, OtherPay, Commodities
+
+from apps.load.models import (
+    Load, LoadTags, Driver, DriverTags, Trailer, 
+    TrailerTags, TruckTags, Truck, Dispatcher,
+    DispatcherTags, EmployeeTags, CustomerBroker, 
+    Stops, Employee, OtherPay, Commodities)
 
 class LoadSerializer(serializers.ModelSerializer):
     class Meta:

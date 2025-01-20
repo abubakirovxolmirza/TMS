@@ -1,4 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
 from apps.chat.models import Chat
 from api.dto.chat import ChatSerializer
 

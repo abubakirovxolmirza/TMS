@@ -1,7 +1,28 @@
 from django.urls import path
-from api.views.auth import RegisterUserView, ListUsersView, UserDetailView, CustomTokenObtainPairView
-from api.views.load import TruckTagsDetailView, LoadListView, LoadDetailView, DriverListView, DriverDetailView, DriverTagsListView, DriverTagsDetailView, TruckListView, TrailerTagsDetailView, TruckDetailView, TrailerListView, TrailerDetailView, TrailerTagsListView, TruckTagsListView, TrailerTagsDetailView, DispatcherListView, DispatcherDetailView, DispatcherTagsListView, DispatcherTagsDetailView, DispatcherTagsDetailView, EmployeeListView, EmployeeDetailView, EmployeeTagsDetailView, EmployeeTagsListView, CustomerBrokerListView, CustomerBrokerDetailView, CommoditiesListView, CommoditiesDetailView, OtherPayListView, OtherPayDetailView, StopsListView, StopsDetailView, LoadTagsListView, LoadTagsDetailView
 from api.views.chat import ChatList, ChatDetail
+
+from api.views.auth import (
+    RegisterUserView, ListUsersView, 
+    UserDetailView, CustomTokenObtainPairView )
+
+from api.views.load import (
+    TruckTagsDetailView, LoadListView, 
+    LoadDetailView, DriverListView, 
+    DriverDetailView, DriverTagsListView, 
+    DriverTagsDetailView, TruckListView, 
+    TrailerTagsDetailView, TruckDetailView, 
+    TrailerListView, TrailerDetailView, 
+    TrailerTagsListView, TruckTagsListView, 
+    TrailerTagsDetailView, DispatcherListView, 
+    DispatcherDetailView, DispatcherTagsListView, 
+    DispatcherTagsDetailView, DispatcherTagsDetailView, 
+    EmployeeListView, EmployeeDetailView, 
+    EmployeeTagsDetailView, EmployeeTagsListView, 
+    CustomerBrokerListView, CustomerBrokerDetailView, 
+    CommoditiesListView, CommoditiesDetailView, OtherPayListView, 
+    OtherPayDetailView, StopsListView, StopsDetailView, LoadTagsListView, 
+    LoadTagsDetailView )
+
 urlpatterns = [
     path('auth/register/', RegisterUserView.as_view(), name='register-user'),
     path('auth/users/', ListUsersView.as_view(), name='list-users'),

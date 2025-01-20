@@ -1,9 +1,23 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from apps.load.models import Load, Driver, DriverTags, Trailer, TrailerTags, Truck, TruckTags, Dispatcher, DispatcherTags, Employee, EmployeeTags, CustomerBroker, Commodities, OtherPay, LoadTags, Stops
-from api.dto.load import LoadSerializer, DriverSerializer, DriverTagsSerializer, TrailerSerializer, TrailerTagsSerializer, TruckSerializer, TruckTagsSerializer, DispatcherSerializer, DispatcherTagsSerializer, EmployeeSerializer, EmployeeTagsSerializer, CustomerBrokerSerializer, LoadTagsSerializer, StopsSerializer, OtherPaySerializer, CommoditiesSerializer
-from rest_framework import generics
+from rest_framework import status, generics
+
+from apps.load.models import (
+    Load, LoadTags, Driver, DriverTags, Trailer, 
+    TrailerTags, TruckTags, Truck, Dispatcher,
+    DispatcherTags, EmployeeTags, CustomerBroker, 
+    Stops, Employee, OtherPay, Commodities)
+
+from api.dto.load import (
+    LoadSerializer, DriverSerializer, 
+    DriverTagsSerializer, TrailerSerializer, 
+    TrailerTagsSerializer, TruckSerializer, 
+    TruckTagsSerializer, DispatcherSerializer, 
+    DispatcherTagsSerializer, EmployeeSerializer, 
+    EmployeeTagsSerializer, CustomerBrokerSerializer, 
+    LoadTagsSerializer, StopsSerializer, OtherPaySerializer, 
+    CommoditiesSerializer )
+
 class LoadListView(APIView):
     def get(self, request):
         loads = Load.objects.all()
