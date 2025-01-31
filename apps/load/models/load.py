@@ -84,6 +84,8 @@ class Load(models.Model):
     pod = models.FileField(blank=True, null=True)
     document = models.FileField(blank=True, null=True)
     comercial_invoice = models.FileField(blank=True, null=True)
+    message_id = models.CharField(max_length=255, null=True, blank=True)
+    
     def __str__(self):
         return f"DT-{self.id}"
 

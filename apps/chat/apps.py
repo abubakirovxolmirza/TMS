@@ -6,3 +6,5 @@ class ChatConfig(AppConfig):
     name = 'apps.chat'
     label = 'apps_chat'
 
+    def ready(self):
+        import apps.chat.signals
