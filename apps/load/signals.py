@@ -7,9 +7,8 @@ from .models import Load
 def send_telegram_message(sender, instance, created, **kwargs):
     if created:  # Faqat yangi Load yaratishda
         bot_token = "7582469651:AAHBtrGUmdo2tzDPU4RSI61AFN99EQnqbJE"  # Botning tokenini kiritish
-        channel_id = "@nnt_tms"  # Kanal username
+        channel_id = "@nnt_tms"  
 
-        # Xabar matnini shakllantirish
         message = f"""
 🚚 #{instance.load_id} :
 🔖 Reference ID: {instance.reference_id if instance.reference_id else 'Not Provided'}
@@ -46,12 +45,11 @@ Total Miles: {instance.total_miles if instance.total_miles else 'TBD'}
 - Verify load status regularly.
         """
 
-        # Telegram API ga yuborish
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         data = {
             "chat_id": channel_id,
             "text": message,
-            "parse_mode": "Markdown"  # MarkDown uchun
+            "parse_mode": "Markdown" 
         }
 
         response = requests.post(url, data=data)
@@ -59,5 +57,5 @@ Total Miles: {instance.total_miles if instance.total_miles else 'TBD'}
 
         if response_data.get("ok"):
             instance.message_id = response_data["result"]["message_id"]  # Yuborilgan xabarning ID sini olish
-            instance.save()  # message_id ni saqlash
+            instance.save() 
         print(response_data)

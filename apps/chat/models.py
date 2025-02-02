@@ -25,7 +25,7 @@ class Chat(models.Model):
                     "chat_id": group_channel_id,  # Guruh ID sini ishlatamiz
                     "text": message,
                     "parse_mode": "Markdown",
-                    "reply_to_message_id": self.load_id.message_id  # Xabarga javob sifatida yuborish
+                    "reply_to_message_id": int(self.load_id.message_id) + 2  # Xabarga javob sifatida yuborish
                 }
 
                 # Xabarni yuborish
