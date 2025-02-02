@@ -5,8 +5,8 @@ from .models import Load
 
 @receiver(post_save, sender=Load)
 def send_telegram_message(sender, instance, created, **kwargs):
-    if created:  # Faqat yangi Load yaratishda
-        bot_token = "7582469651:AAHBtrGUmdo2tzDPU4RSI61AFN99EQnqbJE"  # Botning tokenini kiritish
+    if created: 
+        bot_token = "7582469651:AAHBtrGUmdo2tzDPU4RSI61AFN99EQnqbJE" 
         channel_id = "@nnt_tms"  
 
         message = f"""
@@ -56,6 +56,6 @@ Total Miles: {instance.total_miles if instance.total_miles else 'TBD'}
         response_data = response.json()
 
         if response_data.get("ok"):
-            instance.message_id = response_data["result"]["message_id"]  # Yuborilgan xabarning ID sini olish
+            instance.message_id = response_data["result"]["message_id"] 
             instance.save() 
         print(response_data)
