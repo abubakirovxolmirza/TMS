@@ -9,34 +9,29 @@ class Chat(models.Model):
     user = models.ForeignKey(User, related_name='UserChat', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
-        # Yangi chat saqlanayotganini tekshirish
         if not self.pk:
             super().save(*args, **kwargs)
 
-            # Telegram bot orqali xabar yuborish
-            if self.load_id.message_id:  # Yuborilgan Load xabarining message_id si bo'lsa
+            if self.load_id.message_id:   
                 bot_token = "7582469651:AAHBtrGUmdo2tzDPU4RSI61AFN99EQnqbJE"
-                group_channel_id = "@nnt_tms_chat"  # Guruh username
+                group_channel_id = "@nnt_tms_chat" 
                 message = f"New comment from {self.user.username}: {self.message}"
 
-                # Kommentariyani yuborish (reply_to_message_id parametrini qo'shish)
                 url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
                 data = {
-                    "chat_id": group_channel_id,  # Guruh ID sini ishlatamiz
+                    "chat_id": group_channel_id,
                     "text": message,
                     "parse_mode": "Markdown",
-                    "reply_to_message_id": int(self.load_id.message_id) + 2  # Xabarga javob sifatida yuborish
+                    "reply_to_message_id": int(self.load_id.message_id) + 2
                 }
 
-                # Xabarni yuborish
                 response = requests.post(url, data=data)
                 response_data = response.json()
 
                 if response_data.get("ok"):
                     print("Comment added as reply successfully.")
-                    # Guruhdagi xabar uchun message_id ni saqlash
                     self.group_message_id = response_data["result"]["message_id"]
-                    self.save()  # message_id ni saqlash
+                    self.save()
                 else:
                     print(f"Xatolik: {response_data.get('description')}")
                     print("Javob ma'lumotlari:", response_data)
