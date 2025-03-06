@@ -22,7 +22,7 @@ class Chat(models.Model):
                     "chat_id": group_channel_id,
                     "text": message,
                     "parse_mode": "Markdown",
-                    "reply_to_message_id": int(self.load_id.message_id) + 2
+                    "reply_to_message_id": int(self.load_id.message_id) + 1
                 }
 
                 response = requests.post(url, data=data)
